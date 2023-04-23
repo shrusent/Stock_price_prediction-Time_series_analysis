@@ -77,7 +77,8 @@ if choice == "Home":
         return (pd.DataFrame(nlp(txt)).label.value_counts().head(1).reset_index()['index'][0])
     
     if st.button('Current market sentiment'):
-        sentiment_analysis()
+        res= sentiment_analysis()
+        st.write(res)
         background_color = '#F5F5F5'  # light gray
         header_color = '#1E90FF'  # dodger blue
         cell_color = '#D3D3D3'  # light gray

@@ -1,5 +1,4 @@
 
-
 import streamlit as st
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -21,10 +20,61 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-menu = ["Services", "About"]
+menu = ["Home","Services", "About", "Contact"]
 choice = st.sidebar.selectbox("Select Page", menu)
 
-if choice == "Services":
+
+if choice == "Home":
+     # Add your existing home page code here
+    sns.set_style('darkgrid')
+
+    # Define CSS styles for text elements
+    HEADER_STYLE = """
+        font-size: 50px;
+        font-family: 'Arial Black', sans-serif;
+        font-weight: bold;
+        color: #FF9633;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    """
+
+    TEXT_STYLE = """
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #2F4F4F;
+        text-align: center;
+    """
+
+
+
+    # Set page title and header
+    st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
+
+
+    # Define custom CSS style with background image
+    import base64
+    def add_bg_from_local(image_file):
+        with open(image_file, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
+            background-size: cover
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+        )
+
+    add_bg_from_local('stock_price1.jpg')
+
+
+
+
+elif choice == "Services":
     # Add your existing home page code here
     sns.set_style('darkgrid')
 
@@ -240,5 +290,73 @@ elif choice == "About":
     st.write("<p>If user enters the desired number of days for Netflix stock price, the web app displays the visualization which gives the increase or decrease in trends in Netflix stock prices for the particular number of days entered by the user. The user also can see the latest data on Netflix stock prices to make a decision on whether or not the seasonality and trend continue in the data.</p>", unsafe_allow_html=True)
     st.write("<p>Our models can then make predictions about future stock prices, based on the input data you provide.</p>", unsafe_allow_html=True)
     st.write("<br><h2>About the developers</h2>", unsafe_allow_html=True)
-    st.write("<p>This app is developed by  Shruthi, Akash and Shiva.</p>", unsafe_allow_html=True)
+    st.write("<p>This app is developed by  Shruthi Senthilmani, Akash Patil and Shiva Reddy.</p>", unsafe_allow_html=True)
     st.write("<p>If you have any feedback or questions about this app, please don't hesitate to get in touch with us!</p>", unsafe_allow_html=True)
+
+
+elif choice= "Contact":
+    st.markdown("""
+    <style>
+        h1 {
+            color: #336699;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #336699;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+
+    st.write("<h1>Contact Us</h1>", unsafe_allow_html=True)
+    st.write("<p>This app is developed by Shruthi Senthilmani, Akash Patil and Shiva Reddy.</p>", unsafe_allow_html=True)
+    st.write("<p> We are Data Science graduate students from Indiana University Bloomington.</p>", unsafe_allow_html=True)
+    st.write("<p>If you have any feedback or questions about this app, please don't hesitate to get in touch with us!</p>", unsafe_allow_html=True)
+
+    st.markdown("""<form action="//submit.form" id="ContactUs100" method="post" onsubmit="return ValidateForm(this);">
+<script type="text/javascript">
+function ValidateForm(frm) {
+if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
+if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
+if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
+if (frm.Comments.value == "") { alert('Please enter comments or questions.'); frm.Comments.focus(); return false; }
+return true; }
+</script>
+<table style="width:100%;max-width:550px;border:0;" cellpadding="8" cellspacing="0">
+<tr> <td>
+<label for="Name">Name*:</label>
+</td> <td>
+<input name="Name" type="text" maxlength="60" style="width:100%;max-width:250px;" />
+</td> </tr> <tr> <td>
+<label for="PhoneNumber">Phone number:</label>
+</td> <td>
+<input name="PhoneNumber" type="text" maxlength="43" style="width:100%;max-width:250px;" />
+</td> </tr> <tr> <td>
+<label for="FromEmailAddress">Email address*:</label>
+</td> <td>
+<input name="FromEmailAddress" type="text" maxlength="90" style="width:100%;max-width:250px;" />
+</td> </tr> <tr> <td>
+<label for="Comments">Comments*:</label>
+</td> <td>
+<textarea name="Comments" rows="7" cols="40" style="width:100%;max-width:350px;"></textarea>
+</td> </tr> <tr> <td>
+* - required fields
+</td> <td>
+<div style="float:right"><a href="https://www.100forms.com" id="lnk100" title="form to email">form to email</a></div>
+<input name="skip_Submit" type="submit" value="Submit" />
+<script src="https://www.100forms.com/js/FORMKEY:JJ2X2JH45GW9/SEND:my@email.com" type="text/javascript"></script>
+</td> </tr>
+</table>
+</form>""",unsafe_allow_html=True)
+
+

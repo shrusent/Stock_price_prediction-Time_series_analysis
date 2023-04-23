@@ -6,3 +6,4 @@ pandas
 seaborn
 streamlit
 streamlit_extras.switch_page_button
+streamlit_extras

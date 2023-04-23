@@ -11,7 +11,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.dates as mdates
 import seaborn as sns
-from streamlit_extras.switch_page_button import switch_page
+
 
 # Set page config
 st.set_page_config(
@@ -53,12 +53,9 @@ if choice == "Home":
     # Set page title and header
 
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
-    if st.button('Learn more'):
-        switch_page('About')
-        # Define colors
-        background_color = '#F5F5F5'  # light gray
-        header_color = '#1E90FF'  # dodger blue
-        cell_color = '#D3D3D3'  # light gray
+    st.write("<p>This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. </p>")
+    st.write("<p>The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.</p>")
+ 
 
     
 

@@ -53,7 +53,7 @@ if choice == "Home":
 
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
     if st.button('Learn more'):
-        st.button(page="About")
+        switch_page('About')
         # Define colors
         background_color = '#F5F5F5'  # light gray
         header_color = '#1E90FF'  # dodger blue

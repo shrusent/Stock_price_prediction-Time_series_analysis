@@ -69,7 +69,7 @@ if choice == "Services":
         unsafe_allow_html=True
         )
 
-    add_bg_from_local('/Users/shruthimani/Documents/Time series analysis/final project part 2/stock_price1.jpg')    
+    add_bg_from_local('stock_price1.jpg')    
 
     # Define custom CSS style with fonts
     st.markdown(""" 
@@ -112,14 +112,14 @@ if choice == "Services":
             input_days = st.slider("Select a value", 0, 60, 30)
 
     # Load the data
-    df = pd.read_csv('/Users/shruthimani/Documents/Time series analysis/final project part 2/NFLX.csv', index_col='Date', parse_dates=True)
+    df = pd.read_csv('NFLX.csv', index_col='Date', parse_dates=True)
 
 
 
     def predict_stocks(number):
-        df = pd.read_csv('/Users/shruthimani/Documents/Time series analysis/final project part 2/NFLX.csv', index_col='Date', parse_dates=True)
+        df = pd.read_csv('NFLX.csv', index_col='Date', parse_dates=True)
 
-        model = tf.keras.models.load_model('/Users/shruthimani/Documents/Time series analysis/final project part 2/best_lstm_model.h5', compile = False)
+        model = tf.keras.models.load_model('best_lstm_model.h5', compile = False)
         model.compile(optimizer='adam', loss='mse')
         # Sort the data by date
         df = df.sort_values('Date')

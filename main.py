@@ -11,6 +11,9 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.dates as mdates
 import seaborn as sns
+from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import pipeline
+import praw
 
 
 # Set page config
@@ -55,6 +58,32 @@ if choice == "Home":
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
     st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
     st.write("Check the below box for displaying the current price to make a decision!")
+    
+    def sentiment_analysis():
+        reddit = praw.Reddit(
+        client_id='PXIAdszL4ma5zAqOlclRrQ',
+        client_secret='sEyO--5jvSIOxdijZf0Ghl7cqprRXw',
+        username='kolipoli112',
+        password='Kolipoli@112',
+        user_agent='dm_proj')
+        search_results = reddit.subreddit('all').search('Netflix stocks', limit=20)
+        txt = []
+        for post in search_results:
+            txt.append(post.title)
+        finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
+        tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
+        nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+        result=nlp(txt)
+        return (pd.DataFrame(nlp(txt)).label.value_counts().head(1).reset_index()['index'][0])
+    
+    if st.button('Current market sentiment'):
+        sentiment_analysis()
+        background_color = '#F5F5F5'  # light gray
+        header_color = '#1E90FF'  # dodger blue
+        cell_color = '#D3D3D3'  # light gray
+       
+
+
     
     
     df = pd.read_csv('NFLX.csv', index_col='Date', parse_dates=True)

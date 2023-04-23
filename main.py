@@ -11,6 +11,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
 import matplotlib.dates as mdates
 import seaborn as sns
+from streamlit_extras.switch_page_button import switch_page
 
 # Set page config
 st.set_page_config(
@@ -25,7 +26,7 @@ choice = st.sidebar.selectbox("Select Page", menu)
 
 
 if choice == "Home":
-
+    
      # Add your existing home page code here
     sns.set_style('darkgrid')
 

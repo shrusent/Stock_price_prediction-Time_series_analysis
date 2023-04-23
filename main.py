@@ -26,204 +26,60 @@ choice = st.sidebar.selectbox("Select Page", menu)
 
 if choice == "Home":
 
+     # Add your existing home page code here
+    sns.set_style('darkgrid')
 
-     st.markdown("""<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!------<title> Website Layout | Netflix Stock Price Prediction</title>------>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-   </head>
-<body>
-  <nav>
-    <div class="menu">
-      <div class="logo">
-        <a href="#">Indiana University </a>
-      </div>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-  <div class="img"></div>
-  <div class="center">
-    <div class="title">Netflix Stock Price Prediction</div>
-  </div>
-</body>
-</html>
+    # Define CSS styles for text elements
+    HEADER_STYLE = """
+        font-size: 50px;
+        font-family: 'Arial Black', sans-serif;
+        font-weight: bold;
+        color: #FF9633;
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    """
 
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
-}
-::selection{
-  color: #000;
-  background: #fff;
-}
-nav{
-  position: fixed;
-  background: #1b1b1b;
-  width: 100%;
-  padding: 10px 0;
-  z-index: 12;
-}
-nav .menu{
-  max-width: 1250px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-.menu .logo a{
-  text-decoration: none;
-  color: #fff;
-  font-size: 35px;
-  font-weight: 600;
-}
-.menu ul{
-  display: inline-flex;
-}
-.menu ul li{
-  list-style: none;
-  margin-left: 7px;
-}
-.menu ul li:first-child{
-  margin-left: 0px;
-}
-.menu ul li a{
-  text-decoration: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-.menu ul li a:hover{
-  background: #fff;
-  color: black;
-}
-.img{
-  background: url('stock_price1.jpg')no-repeat;
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-.img::before{
-  content: '';
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.4);
-}
-.center{
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  padding: 0 20px;
-  text-align: center;
-}
-.center .title{
-  color: #fff;
-  font-size: 55px;
-  font-weight: 600;
-}
-.center .sub_title{
-  color: #fff;
-  font-size: 52px;
-  font-weight: 600;
-}
-.center .btns{
-  margin-top: 20px;
-}
-.center .btns button{
-  height: 55px;
-  width: 170px;
-  border-radius: 5px;
-  border: none;
-  margin: 0 10px;
-  border: 2px solid white;
-  font-size: 20px;
-  font-weight: 500;
-  padding: 0 10px;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.3s ease;
-}
-.center .btns button:first-child{
-  color: #fff;
-  background: none;
-}
-.btns button:first-child:hover{
-  background: white;
-  color: black;
-}
-.center .btns button:last-child{
-  background: white;
-  color: black;
-}""", unsafe_allow_html= True)
+    TEXT_STYLE = """
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #2F4F4F;
+        text-align: center;
+    """
 
 
 
-    #  # Add your existing home page code here
-    # sns.set_style('darkgrid')
+    # Set page title and header
 
-    # # Define CSS styles for text elements
-    # HEADER_STYLE = """
-    #     font-size: 50px;
-    #     font-family: 'Arial Black', sans-serif;
-    #     font-weight: bold;
-    #     color: #FF9633;
-    #     text-align: center;
-    #     margin-top: 50px;
-    #     margin-bottom: 50px;
-    # """
+    st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
+    if st.button('Learn more'):
+        st.change_page("About")
+        # Define colors
+        background_color = '#F5F5F5'  # light gray
+        header_color = '#1E90FF'  # dodger blue
+        cell_color = '#D3D3D3'  # light gray
 
-    # TEXT_STYLE = """
-    #     font-size: 20px;
-    #     font-family: 'Arial', sans-serif;
-    #     color: #2F4F4F;
-    #     text-align: center;
-    # """
+    
 
 
+    # Define custom CSS style with background image
+    import base64
+    def add_bg_from_local(image_file):
+        with open(image_file, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read())
+        st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
+            background-size: cover
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+        )
 
-    # # Set page title and header
-    # st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
-
-
-    # # Define custom CSS style with background image
-    # import base64
-    # def add_bg_from_local(image_file):
-    #     with open(image_file, "rb") as image_file:
-    #         encoded_string = base64.b64encode(image_file.read())
-    #     st.markdown(
-    #     f"""
-    #     <style>
-    #     .stApp {{
-    #         background-image: url(data:image/{"png"};base64,{encoded_string.decode()});
-    #         background-size: cover
-    #     }}
-    #     </style>
-    #     """,
-    #     unsafe_allow_html=True
-    #     )
-
-    # add_bg_from_local('stock_price1.jpg')
+    add_bg_from_local('stock_price1.jpg')
 
 
 
@@ -448,7 +304,7 @@ elif choice == "About":
     st.write("<p>If you have any feedback or questions about this app, please don't hesitate to get in touch with us!</p>", unsafe_allow_html=True)
 
 
-elif choice== "Contact":
+elif choice= "Contact":
     st.markdown("""
     <style>
         h1 {

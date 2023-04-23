@@ -54,7 +54,10 @@ if choice == "Home":
 
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
     st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
- 
+    st.write("Check the below box for displaying the current price to make a decision!")
+    
+    
+    df = pd.read_csv('NFLX.csv', index_col='Date', parse_dates=True)
     # To display the current trend of the netflix stock prices
     if st.checkbox('Display current value of stock prices'):
         st.dataframe(df['Adj Close'].tail(5))

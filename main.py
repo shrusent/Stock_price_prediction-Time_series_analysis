@@ -53,8 +53,7 @@ if choice == "Home":
     # Set page title and header
 
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
-    st.write("<p>This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. </p>")
-    st.write("<p>The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.</p>")
+    st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
  
 
     

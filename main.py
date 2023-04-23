@@ -304,7 +304,7 @@ elif choice == "About":
     st.write("<p>If you have any feedback or questions about this app, please don't hesitate to get in touch with us!</p>", unsafe_allow_html=True)
 
 
-elif choice= "Contact":
+elif choice== "Contact":
     st.markdown("""
     <style>
         h1 {

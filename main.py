@@ -59,6 +59,9 @@ if choice == "Home":
     st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
     st.write("Check the below box for displaying the current price to make a decision!")
     
+    finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
+    tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
+    nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
     def sentiment_analysis():
         reddit = praw.Reddit(
         client_id='PXIAdszL4ma5zAqOlclRrQ',
@@ -70,15 +73,13 @@ if choice == "Home":
         txt = []
         for post in search_results:
             txt.append(post.title)
-        finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
-        tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
-        nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
         result=nlp(txt)
         return (pd.DataFrame(nlp(txt)).label.value_counts().head(1).reset_index()['index'][0])
     
     if st.button('Current market sentiment'):
         res= sentiment_analysis()
-        st.write(res)
+        st.write(f'The current market sentiment is {res}. Invest at your own risk. Click the checkbox button below for more info on current prices')
+        
         background_color = '#F5F5F5'  # light gray
         header_color = '#1E90FF'  # dodger blue
         cell_color = '#D3D3D3'  # light gray

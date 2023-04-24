@@ -16,9 +16,7 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import pipeline
 import praw
 
-finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
-tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
-nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+
 
 
 # Set page config
@@ -66,6 +64,9 @@ if choice == "Home":
     
     
     def sentiment_analysis():
+        finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
+        tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
+        nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
         reddit = praw.Reddit(
         client_id='PXIAdszL4ma5zAqOlclRrQ',
         client_secret='sEyO--5jvSIOxdijZf0Ghl7cqprRXw',

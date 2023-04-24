@@ -396,7 +396,6 @@ return true; }
 </td> <td>
 
 <input name="skip_Submit" type="submit" value="Submit" />
-<script src="https://www.100forms.com/js/FORMKEY:JJ2X2JH45GW9/SEND:my@email.com" type="text/javascript"></script>
 </td> </tr>
 </table>
 </form>""",unsafe_allow_html=True)

@@ -15,6 +15,10 @@ from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import pipeline
 import praw
 
+finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
+tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
+nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+
 
 # Set page config
 st.set_page_config(
@@ -59,9 +63,7 @@ if choice == "Home":
     st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
     st.write("Check the current sentiment of the market to make a decision!")
     
-    finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
-    tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
-    nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+    
     def sentiment_analysis():
         reddit = praw.Reddit(
         client_id='PXIAdszL4ma5zAqOlclRrQ',

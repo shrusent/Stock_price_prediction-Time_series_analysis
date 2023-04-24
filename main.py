@@ -364,8 +364,7 @@ elif choice== "Contact":
     st.write("<p>This app is developed by Shruthi Senthilmani, Akash Patil and Shiva Reddy.</p>", unsafe_allow_html=True)
     st.write("<p> We are Data Science graduate students from Indiana University Bloomington.</p>", unsafe_allow_html=True)
     st.write("<p>If you have any feedback or questions about this app, please don't hesitate to get in touch with us!</p>", unsafe_allow_html=True)
-
-    st.markdown("""
+    st.markdown("""<form action="//submit.form" id="ContactUs100" method="post" onsubmit="return ValidateForm(this);">
 <script type="text/javascript">
 function ValidateForm(frm) {
 if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
@@ -396,8 +395,11 @@ return true; }
 </td> <td>
 
 <input name="skip_Submit" type="submit" value="Submit" />
+<script src="https://www.100forms.com/js/FORMKEY:JJ2X2JH45GW9/SEND:my@email.com" type="text/javascript"></script>
 </td> </tr>
 </table>
 </form>""",unsafe_allow_html=True)
+
+
 
 

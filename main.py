@@ -57,7 +57,7 @@ if choice == "Home":
 
     st.markdown("<p style='" + HEADER_STYLE + "'>Netflix Stock Price Prediction App</p>", unsafe_allow_html=True)
     st.write("This Web app can be used for predicting Netflix stock prices for a specified number of days using the historical data. The visualization of the historical data regarding the inflation/decrease in rates of stocks with their time series components can also be observed.")
-    st.write("Check the below box for displaying the current price to make a decision!")
+    st.write("Check the current sentiment of the market to make a decision!")
     
     finbert = BertForSequenceClassification.from_pretrained('yiyanghkust/finbert-tone',num_labels=3)
     tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
@@ -78,7 +78,7 @@ if choice == "Home":
     
     if st.button('Current market sentiment'):
         res= sentiment_analysis()
-        st.write(f'The current market sentiment is {res}. Invest at your own risk. Click the checkbox button below for more info on current prices')
+        st.write(f'The current market sentiment is {res}. Invest at your own risk. Check the box below for more info on current prices')
         
         background_color = '#F5F5F5'  # light gray
         header_color = '#1E90FF'  # dodger blue
